@@ -23,6 +23,21 @@
 
 * Monday, 13th at 8:00 (at the latest!): each group submits the lab (full implementation).
 
+## <a name="Important"></a>IMPORTANT
+
+* Do not forget to include your GitHub IDs in the `@TestAuthor` annotations in your tests. If you work in a group of 2 students, please include your 2 logins in every test:
+
+```
+// use this if there is one student in the group
+@TestAuthor(githubId = "wasadigi")
+```
+
+```
+// use this if there are 2 students in the group
+@TestAuthor(githubId = {"wasadigi", "prevole"})
+```
+
+
 ## <a name="Introduction"></a>Introduction
 
 The goal of this lab is to **get familiar with TCP programming in Java**, by working both with a server and a client. We will consider a **custom application-level protocol**, the "Quiz Roulette" protocol, which is used to write sadistic client-server applications. More on this later.
