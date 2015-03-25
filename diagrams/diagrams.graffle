@@ -2601,7 +2601,7 @@ IRouletteV1Client}</string>
 		<key>ExpandedCanvases</key>
 		<array/>
 		<key>Frame</key>
-		<string>{{480, 292}, {1440, 746}}</string>
+		<string>{{0, 132}, {1440, 746}}</string>
 		<key>ListView</key>
 		<false/>
 		<key>OutlineWidth</key>
@@ -2615,7 +2615,7 @@ IRouletteV1Client}</string>
 		<key>SidebarWidth</key>
 		<integer>200</integer>
 		<key>VisibleRegion</key>
-		<string>{{93.023254266618224, 93.023254266618224}, {1408.1395114609334, 688.37208157297493}}</string>
+		<string>{{90.697672909952772, 0}, {1424.4185809575915, 705.81394174796583}}</string>
 		<key>Zoom</key>
 		<real>0.86000001430511475</real>
 		<key>ZoomValues</key>
