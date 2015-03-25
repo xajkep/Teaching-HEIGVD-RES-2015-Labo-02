@@ -37,6 +37,7 @@
 @TestAuthor(githubId = {"wasadigi", "prevole"})
 ```
 
+* When you create the `.java` files that contain your JUnit tests, make sure to include one of your GitHub ids in the name (replace 'wasadigi' with your GitHub id in `RouletteV1WasadigiTest.java`). This is important to make sure that all groups create their own files, so that we don't have merge conflicts afterwards.
 
 ## <a name="Introduction"></a>Introduction
 
