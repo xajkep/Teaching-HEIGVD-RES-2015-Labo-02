@@ -5,10 +5,18 @@
  */
 package ch.heigvd.res.labs.roulette.net.client;
 
+import ch.heigvd.schoolpulse.TestAuthor;
+import java.io.IOException;
+import org.junit.Test;
+
 /**
  *
  * @author Miguel
  */
 public class RouletteV1EdriTest {
-   
+   @Test
+   @TestAuthor(githubId = {"edri", "beedle-"})
+   public void testOfATest() throws IOException {
+      
+   }
 }
