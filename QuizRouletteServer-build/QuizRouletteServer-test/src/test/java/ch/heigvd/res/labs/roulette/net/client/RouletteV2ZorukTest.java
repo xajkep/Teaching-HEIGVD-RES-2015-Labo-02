@@ -48,7 +48,7 @@ public class RouletteV2ZorukTest {
     public void theClearFunctionShoudRemoveAllStudents() throws IOException {
         roulettePair.getClient().loadStudent("Super student");
         ((RouletteV2ClientImpl)roulettePair.getClient()).clearDataStore();
-        assertEquals(roulettePair.getClient().getNumberOfStudents(), 1);
+        assertEquals(roulettePair.getClient().getNumberOfStudents(), 0);
     }
     
     @Test
