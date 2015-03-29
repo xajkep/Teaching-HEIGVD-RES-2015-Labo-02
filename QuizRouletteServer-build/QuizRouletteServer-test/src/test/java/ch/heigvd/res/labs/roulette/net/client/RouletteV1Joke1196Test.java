@@ -29,33 +29,46 @@ public class RouletteV1Joke1196Test {
     
     
     
-    @Test
-    @TestAuthor(githubId = {"joke1196", "marom17"})
-    public void theClientShouldNotSendEmptyString()throws IOException{
-        IRouletteV1Client client = roulettePair.getClient();
-        client.loadStudent("");
-        assertEquals(0, client.getNumberOfStudents());
-    }
+    
     
     @Test
     @TestAuthor(githubId = {"joke1196", "marom17"})
-    public void theClientShouldNotSendOnlySpaceString()throws IOException{
-        IRouletteV1Client client = roulettePair.getClient();
-        client.loadStudent(" ");
-        assertEquals(0, client.getNumberOfStudents());
-    }
-    
-    @Test
-    @TestAuthor(githubId = {"joke1196", "marom17"})
-    public void theNameSendShouldBeTheNameRecieved()throws IOException, EmptyStoreException{
+    public void theLoadFunctionShouldWork()throws IOException, EmptyStoreException{
         IRouletteV1Client client = roulettePair.getClient();
         client.loadStudent("jean");
         assertEquals("jean", client.pickRandomStudent().getFullname());
+        assertEquals(1,client.getNumberOfStudents());
+    }
+    @Test
+    @TestAuthor(githubId = {"joke1196", "marom17"})
+    public void theRandomFunctionShouldWorkWithOneStudent()throws IOException, EmptyStoreException{
+        IRouletteV1Client client = roulettePair.getClient();
+        client.loadStudent("tom");
+        assertEquals("tom", client.pickRandomStudent().getFullname());
+        assertEquals("tom", client.pickRandomStudent().getFullname());
+        assertEquals("tom", client.pickRandomStudent().getFullname());
+
     }
     
     @Test
     @TestAuthor(githubId = {"joke1196", "marom17"})
-    public void itShouldBePossibleForARouletteClientToDisconnectARouletteServer()throws IOException{
+    public void theRandomFunctionShouldWork() throws IOException,EmptyStoreException{
+        IRouletteV1Client client = roulettePair.getClient();
+        client.loadStudent("jean");
+        client.loadStudent("Tom");
+        boolean randomTest = false;
+        if(client.pickRandomStudent().getFullname().equals("Tom") 
+                || client.pickRandomStudent().getFullname().equals("jean")){
+            assertTrue(true);
+        }else{
+            assertTrue(false);
+        }
+    }
+    
+    
+    @Test
+    @TestAuthor(githubId = {"joke1196", "marom17"})
+    public void itShouldBePossibleForARouletteClientToDisconnectFromARouletteServer()throws IOException{
         int port = roulettePair.getServer().getPort();
         IRouletteV1Client client = new RouletteV1ClientImpl();
         client.connect("localhost", port);
@@ -74,6 +87,20 @@ public class RouletteV1Joke1196Test {
         client2.connect("localhost", port);
         assertTrue(client1.isConnected());
         assertTrue(client2.isConnected());
+    }
+    
+    @Test
+    @TestAuthor(githubId = {"joke1196", "marom17"})
+    public void itShouldBePossibleForMultipleRouletteClientsToAddStudents()throws IOException{
+        int port = roulettePair.getServer().getPort();
+        IRouletteV1Client client1 = new RouletteV1ClientImpl();
+        IRouletteV1Client client2 = new RouletteV1ClientImpl();
+        client1.connect("localhost", port);
+        client2.connect("localhost", port);
+        client1.loadStudent("jim");
+        client2.loadStudent("marc");
+        assertEquals(2,client1.getNumberOfStudents());
+        assertEquals(2,client2.getNumberOfStudents());
     }
     
    
