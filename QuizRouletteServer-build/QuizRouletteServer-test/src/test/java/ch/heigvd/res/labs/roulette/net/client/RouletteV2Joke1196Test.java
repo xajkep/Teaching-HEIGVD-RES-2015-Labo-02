@@ -35,14 +35,19 @@ public class RouletteV2Joke1196Test {
     
     @Test
     @TestAuthor(githubId = {"joke1196", "marom17"})
-    public void weShouldBeAbleToAddOneStudentToList() throws IOException, EmptyStoreException {
+    public void weShouldBeAbleToAddAList() throws IOException, EmptyStoreException {
         int port = roulettePair.getServer().getPort();
         IRouletteV2Client client = new RouletteV2ClientImpl();
         client.connect("localhost", port);
-        Student student = new Student("tom");
-        client.listStudents().add(student);
+        Student bryan = new Student("Bryan");
+        Student valentin = new Student("Valentin");
+        List<Student> list = new ArrayList<>();
+        list.add(bryan);
+        list.add(valentin);
+        client.loadStudents(list);
         assertFalse(client.listStudents().isEmpty());
-        assertEquals(client.listStudents().get(0).getFullname(), student);
+        assertEquals(client.listStudents().get(0).getFullname(), bryan.getFullname());
+        assertEquals(client.listStudents().get(1).getFullname(), valentin.getFullname());
     }
     
     @Test
