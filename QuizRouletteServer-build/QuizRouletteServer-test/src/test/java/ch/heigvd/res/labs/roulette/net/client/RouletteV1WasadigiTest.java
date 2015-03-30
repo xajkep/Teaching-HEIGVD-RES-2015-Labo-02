@@ -88,4 +88,80 @@ public class RouletteV1WasadigiTest {
     client.pickRandomStudent();
   }
   
+  @Test
+  @TestAuthor(githubId = {"xajkep", "msaw"})
+  public void theServerShouldSupportTwoClientConnection() throws IOException {
+    IRouletteV1Client client1 = new RouletteV1ClientImpl();
+    IRouletteV1Client client2 = new RouletteV1ClientImpl();
+    
+    int port = roulettePair.getServer().getPort();
+    String host = "127.0.0.1";
+
+    client1.connect(host, port);
+    client2.connect(host, port);
+    
+    assertTrue(client1.isConnected() && client2.isConnected());
+    
+    client1.close();
+    client2.close();
+  }
+  
+  @Test
+  @TestAuthor(githubId = {"xajkep", "msaw"})
+  public void theServerRandomCmdShouldReturnSomething() throws IOException {
+    IRouletteV1Client client = roulettePair.getClient();
+    client.loadStudent("Toto Tata");
+    
+    assertNotNull(client.pickRandomStudent());
+  }
+  
+  
+  @Test
+  @TestAuthor(githubId = {"xajkep", "msaw"})
+  public void theServerByeCmdShouldDisconnectTheClient() throws IOException {
+    IRouletteV1Client client = roulettePair.getClient();
+    client.disconnect();
+    
+    assertFalse(client.isConnected());
+  }
+  
+  @Test
+  @TestAuthor(githubId = {"xajkep", "msaw"})
+  public void theServerShouldKeepDataWhenClientDisconnect() throws IOException {
+    IRouletteV1Client client1 = new RouletteV1ClientImpl();
+    IRouletteV1Client client2 = new RouletteV1ClientImpl();
+    
+    int port = roulettePair.getServer().getPort();
+    String host = "127.0.0.1";
+
+    client1.connect(host, port);
+    client2.connect(host, port);
+    
+    client1.loadStudent("Toto Tata");
+    client1.disconnect();
+    
+    assertNotNull(client.pickRandomStudent());
+    
+    client1.close();
+    client2.close();
+  }
+  
+  
+  @Test
+  @TestAuthor(githubId = {"xajkep", "msaw"})
+  public void theServerShouldSaveGivenData() throws IOException {
+    IRouletteV1Client client = roulettePair.getClient();
+    client.loadStudent("Foo Bar");
+    
+    assert("Foo Bar", client.pickRandomStudent());
+  }
+  
+  
+  @Test
+  @TestAuthor(githubId = {"xajkep", "msaw"})
+  public void theServerShouldReturnErrorIfRandomCmdIsUseWithoutData() throws IOException {
+    IRouletteV1Client client = roulettePair.getClient();
+    assertNull(client.pickRandomStudent());
+  }
+  
 }
