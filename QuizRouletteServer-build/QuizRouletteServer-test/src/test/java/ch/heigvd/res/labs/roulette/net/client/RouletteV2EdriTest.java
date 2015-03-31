@@ -23,9 +23,6 @@ import org.junit.rules.ExpectedException;
 public class RouletteV2EdriTest
 {
    @Rule
-   public ExpectedException exception = ExpectedException.none();
-   
-   @Rule
    public EphemeralClientServerPair roulettePair = new EphemeralClientServerPair(RouletteV2Protocol.VERSION);
 
    @Test
@@ -95,10 +92,7 @@ public class RouletteV2EdriTest
   
    @Test
    @TestAuthor(githubId = {"edri", "beedle-"})
-   public void theServerShouldSendAnErrorResponseWhenClearIsCalledAndThereIsNoStudent() throws IOException, EmptyStoreException
-   {
-      IRouletteV1Client client1 = roulettePair.getClient();
-      exception.expect(EmptyStoreException.class);
-      ((IRouletteV2Client)client1).clearDataStore();
+   public void theServerShouldReturnTheCorrectVersionNumber() throws IOException {
+      assertEquals(RouletteV2Protocol.VERSION, roulettePair.getClient().getProtocolVersion());
    }
 }
