@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @author Amine Tayaa
  * @author Benoît Zuckschwerdt
  */
-public class RouletteV2WasadigiTest {
+public class RouletteV2xajkepTest {
 
   @Rule
   public ExpectedException exception = ExpectedException.none();
@@ -27,7 +27,7 @@ public class RouletteV2WasadigiTest {
   public EphemeralClientServerPair roulettePair = new EphemeralClientServerPair(RouletteV2Protocol.VERSION);
 
   /* Copy of V1 TESTs */
-  
+  /*
   @Test
   @TestAuthor(githubId = "wasadigi")
   public void theTestRouletteServerShouldRunDuringTests() throws IOException {
@@ -92,6 +92,7 @@ public class RouletteV2WasadigiTest {
     exception.expect(EmptyStoreException.class);
     client.pickRandomStudent();
   }
+  */
   
   @Test
   @TestAuthor(githubId = {"xajkep", "msaw"})

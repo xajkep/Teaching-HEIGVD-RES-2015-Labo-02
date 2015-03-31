@@ -17,7 +17,7 @@ import ch.heigvd.res.labs.roulette.data.Student;
  * @author Amine Tayaa
  * @author Benoît Zuckschwerdt
  */
-public class RouletteV1WasadigiTest {
+public class RouletteV1xajkepTest {
 
   @Rule
   public ExpectedException exception = ExpectedException.none();
@@ -25,6 +25,7 @@ public class RouletteV1WasadigiTest {
   @Rule
   public EphemeralClientServerPair roulettePair = new EphemeralClientServerPair(RouletteV1Protocol.VERSION);
 
+  /*
   @Test
   @TestAuthor(githubId = "wasadigi")
   public void theTestRouletteServerShouldRunDuringTests() throws IOException {
@@ -89,6 +90,7 @@ public class RouletteV1WasadigiTest {
     exception.expect(EmptyStoreException.class);
     client.pickRandomStudent();
   }
+  */
   
   @Test
   @TestAuthor(githubId = {"xajkep", "msaw"})
