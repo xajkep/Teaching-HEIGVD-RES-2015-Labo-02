@@ -17,7 +17,7 @@ import org.junit.rules.ExpectedException;
  * This class contains automated tests to validate the client and the server
  * implementation of the Roulette Protocol (version 1)
  *
- * @author Cyrill Zundler & Rick Wertenbroek
+ * @author Cyrill Zundler and Rick Wertenbroek
  */
 public class RouletteV2ond9IIIIIIIIIIIIITest {
 
@@ -27,7 +27,6 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
     @Rule
     public EphemeralClientServerPair roulettePair = new EphemeralClientServerPair(RouletteV2Protocol.VERSION);
 
-    
     @Test
     @TestAuthor(githubId = {"ond9", "IIIIIIIIIIIII"})
     public void theServerShouldBeEmptyAfterClear() throws IOException {
@@ -60,7 +59,7 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
         for (Student st : studentsReceived) {
             namesServer.add(st.getFullname());
         }
-        
+
         namesClient.sort(null);
         namesServer.sort(null);
 
@@ -73,12 +72,11 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
     public void theServerShouldReturnTheCorrectVersionNumber() throws IOException {
         assertEquals(RouletteV2Protocol.VERSION, roulettePair.getClient().getProtocolVersion());
     }
-    
+
     @Test
     @TestAuthor(githubId = {"ond9", "IIIIIIIIIIIII"})
     public void theServerShouldRespondCorrectlyOnRandomAfterClear() throws IOException {
-        
-        
+
         BufferedReader reader = null;
         PrintWriter writer = null;
 
@@ -89,7 +87,7 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
 
         writer.println("CLEAR");
         writer.flush();
-        
+
         writer.println("RANDOM");
         writer.flush();
 
@@ -97,9 +95,9 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
 
         String expectedResponse = "{\"error\":\"There is no student, you cannot pick a random one\"}";
         assertEquals(expectedResponse, response);
-        
-       
+
     }
+
     @Test
     @TestAuthor(githubId = {"ond9", "IIIIIIIIIIIII"})
     public void theServerShouldClearTheDataStore() throws IOException {
@@ -113,7 +111,7 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
 
         writer.println("CLEAR");
         writer.flush();
-        
+
         writer.println("INFO");
         writer.flush();
 
@@ -122,11 +120,11 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
         String expectedResponse = "{\"protocolVersion\":\"2.0\",\"numberOfStudents\":0}";
         assertEquals(expectedResponse, response);
     }
-    
+
     @Test
     @TestAuthor(githubId = {"ond9", "IIIIIIIIIIIII"})
     public void theServerShouldReturnTheCorrectNumberOfCommands() throws IOException {
-       
+
         BufferedReader reader = null;
         PrintWriter writer = null;
 
@@ -137,14 +135,12 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
 
         writer.println("BYE");
         writer.flush();
-        
+
         String response = reader.readLine();
 
         String expectedResponse = "{\"status\":\"success\",\"numberOfCommands\":1}";
         assertEquals(expectedResponse, response);
-        
+
     }
-    
-    
-    
+
 }
