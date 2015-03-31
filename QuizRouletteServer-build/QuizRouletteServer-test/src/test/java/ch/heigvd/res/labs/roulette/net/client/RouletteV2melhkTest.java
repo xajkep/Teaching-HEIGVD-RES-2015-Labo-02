@@ -89,8 +89,11 @@ public class RouletteV2melhkTest {
   @Test
   @TestAuthor(githubId = {"melhk", "j-nolan"})
   public void theClientShouldBeAbleToRetrieveAnotherClientList() throws IOException {
+    int port = roulettePair.getServer().getPort();
     IRouletteV2Client client1  = new RouletteV2ClientImpl();
     IRouletteV2Client client2 = new RouletteV2ClientImpl();
+    client1.connect("localhost", port);
+    client2.connect("localhost", port);
     client1.loadStudent("Max Poulet");
     client1.loadStudent("Ventriloque népalais");
     client1.disconnect();
