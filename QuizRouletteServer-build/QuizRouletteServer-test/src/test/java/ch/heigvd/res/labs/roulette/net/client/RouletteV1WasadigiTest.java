@@ -1,9 +1,13 @@
 package ch.heigvd.res.labs.roulette.net.client;
 
 import ch.heigvd.res.labs.roulette.data.EmptyStoreException;
+import ch.heigvd.res.labs.roulette.data.Student;
 import ch.heigvd.res.labs.roulette.net.protocol.RouletteV1Protocol;
 import ch.heigvd.schoolpulse.TestAuthor;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Rule;
@@ -87,5 +91,6 @@ public class RouletteV1WasadigiTest {
     exception.expect(EmptyStoreException.class);
     client.pickRandomStudent();
   }
+  
   
 }
