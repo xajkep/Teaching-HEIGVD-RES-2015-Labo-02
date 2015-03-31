@@ -108,8 +108,8 @@ public class RouletteV2YibnlRaphaelRacineTest {
    @TestAuthor(githubId = {"yibnl", "raphaelracine"})
    public void TheClientHasToConnectToRightServer() throws IOException {
       IRouletteV2Client client = new RouletteV2ClientImpl();
-
       int port = roulettePair.server.getPort();
+      exception.expect(IOException.class);
       client.connect("www.globulos.com", port);
       assertFalse(client.isConnected());
    }

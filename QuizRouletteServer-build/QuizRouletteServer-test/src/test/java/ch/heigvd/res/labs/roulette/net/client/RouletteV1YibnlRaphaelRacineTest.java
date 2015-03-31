@@ -38,7 +38,7 @@ public class RouletteV1YibnlRaphaelRacineTest {
          client.connect("localhost", port);
          assertTrue(client.isConnected());
          client.disconnect();
-         assertFalse(!client.isConnected());
+         assertFalse(client.isConnected());
       } catch (IOException ex) {
          Logger.getLogger(RouletteV1YibnlRaphaelRacineTest.class.getName()).log(Level.SEVERE, null, ex);
       }
@@ -75,7 +75,9 @@ public class RouletteV1YibnlRaphaelRacineTest {
    @Test
    @TestAuthor(githubId = {"yibnl", "raphaelracine"})
    public void TheClientSouldReturnTheCorrectVersionNumber() throws IOException {
+      int port = roulettePair.getServer().getPort();
       IRouletteV1Client client = new RouletteV1ClientImpl();
+      client.connect("localhost", port);
       assertEquals(client.getProtocolVersion(), roulettePair.protocolVersion);
    }
 
