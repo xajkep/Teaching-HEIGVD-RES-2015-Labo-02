@@ -27,10 +27,6 @@ public class RouletteV1Joke1196Test {
     public EphemeralClientServerPair roulettePair = new EphemeralClientServerPair(RouletteV1Protocol.VERSION);
 
     
-    
-    
-    
-    
     @Test
     @TestAuthor(githubId = {"joke1196", "marom17"})
     public void theLoadFunctionShouldWork()throws IOException, EmptyStoreException{
@@ -56,9 +52,9 @@ public class RouletteV1Joke1196Test {
         IRouletteV1Client client = roulettePair.getClient();
         client.loadStudent("jean");
         client.loadStudent("Tom");
-        boolean randomTest = false;
-        if(client.pickRandomStudent().getFullname().equals("Tom") 
-                || client.pickRandomStudent().getFullname().equals("jean")){
+        String student = client.pickRandomStudent().getFullname();
+        if(student.equals("Tom") 
+                || student.equals("jean")){
             assertTrue(true);
         }else{
             assertTrue(false);
