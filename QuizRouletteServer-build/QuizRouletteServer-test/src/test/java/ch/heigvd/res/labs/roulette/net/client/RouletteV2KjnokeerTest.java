@@ -64,7 +64,8 @@ public class RouletteV2KjnokeerTest {
     RouletteV2ClientImpl client = new RouletteV2ClientImpl();
     client.connect("localhost", roulettePair.getServer().getPort());
     client.clearDataStore();
-    exception.equals(EmptyStoreException.class);
+    exception.expect(EmptyStoreException.class);
+    
     client.pickRandomStudent();
   }
   
