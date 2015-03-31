@@ -19,7 +19,7 @@ import sun.rmi.server.UnicastRef;
  *
  * @author Olivier Liechti
  */
-public class RouletteV1WasadigiTest {
+public class RouletteV1HauraneTest {
     
     @Rule
     public ExpectedException exception = ExpectedException.none();
