@@ -46,8 +46,7 @@ public class RouletteV2Joke1196Test {
         list.add(valentin);
         client.loadStudents(list);
         assertFalse(client.listStudents().isEmpty());
-        assertEquals(client.listStudents().get(0).getFullname(), bryan.getFullname());
-        assertEquals(client.listStudents().get(1).getFullname(), valentin.getFullname());
+        assertEquals(client.listStudents().size(), 2);
     }
     
     @Test
