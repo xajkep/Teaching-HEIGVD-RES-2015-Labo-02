@@ -62,8 +62,10 @@ public class StudentsStoreImpl implements IStudentsStore {
         LOG.log(Level.INFO, "End of stream reached. New students have been added to the store. How many? We'll tell you when the lab is complete...");
         endReached = true;
       } else {
-        LOG.log(Level.INFO, "Adding student {0} to the store.", record);
-        studentsToAdd.add(new Student(record));
+        if (record != null && !record.trim().equals("")) {
+          LOG.log(Level.INFO, "Adding student {0} to the store.", record);
+          studentsToAdd.add(new Student(record));
+        }
       }
     }
     synchronized (this) {

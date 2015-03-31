@@ -134,7 +134,7 @@ public class RouletteServer {
    * @return true if the server accepts client connection requests
    */
   public boolean isRunning() {
-    return (serverSocket.isBound());
+    return (shouldRun && serverSocket.isBound());
   }
 
   /**
