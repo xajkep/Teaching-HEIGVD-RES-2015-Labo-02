@@ -76,7 +76,7 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
     
     @Test
     @TestAuthor(githubId = {"ond9", "IIIIIIIIIIIII"})
-    public void TEST1() throws IOException {
+    public void theServerShouldRespondCorrectlyOnRandomAfterClear() throws IOException {
         
         
         BufferedReader reader = null;
@@ -102,7 +102,7 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
     }
     @Test
     @TestAuthor(githubId = {"ond9", "IIIIIIIIIIIII"})
-    public void TEST2() throws IOException {
+    public void theServerShouldClearTheDataStore() throws IOException {
         BufferedReader reader = null;
         PrintWriter writer = null;
 
@@ -122,9 +122,10 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
         String expectedResponse = "{\"protocolVersion\":\"2.0\",\"numberOfStudents\":0}";
         assertEquals(expectedResponse, response);
     }
+    
     @Test
     @TestAuthor(githubId = {"ond9", "IIIIIIIIIIIII"})
-    public void TEST3() throws IOException {
+    public void theServerShouldReturnTheCorrectNumberOfCommands() throws IOException {
        
         BufferedReader reader = null;
         PrintWriter writer = null;
