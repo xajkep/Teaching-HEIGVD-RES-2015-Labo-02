@@ -68,7 +68,7 @@ public class RouletteV1melhkTest {
     client1.disconnect();
     client2.connect("localhost", port);
     Student s = client2.pickRandomStudent();
-    assertEquals(s.getFullname(), "Platin");
+    assertEquals(s.getFullname(), "Platon");
     client2.disconnect();
   }
   
