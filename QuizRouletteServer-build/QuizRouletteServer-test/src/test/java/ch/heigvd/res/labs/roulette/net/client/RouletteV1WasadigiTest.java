@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
+import ch.heigvd.res.labs.roulette.data.Student;
 
 /**
  * This class contains automated tests to validate the client and the server
@@ -102,29 +103,20 @@ public class RouletteV1WasadigiTest {
     
     assertTrue(client1.isConnected() && client2.isConnected());
     
-    client1.close();
-    client2.close();
+//     client1.close();
+//     client2.close();
   }
   
   @Test
   @TestAuthor(githubId = {"xajkep", "msaw"})
-  public void theServerRandomCmdShouldReturnSomething() throws IOException {
+  public void theServerRandomCmdShouldReturnSomething() throws IOException, EmptyStoreException {
     IRouletteV1Client client = roulettePair.getClient();
     client.loadStudent("Toto Tata");
     
     assertNotNull(client.pickRandomStudent());
   }
   
-  
-  @Test
-  @TestAuthor(githubId = {"xajkep", "msaw"})
-  public void theServerByeCmdShouldDisconnectTheClient() throws IOException {
-    IRouletteV1Client client = roulettePair.getClient();
-    client.disconnect();
-    
-    assertFalse(client.isConnected());
-  }
-  
+/*  
   @Test
   @TestAuthor(githubId = {"xajkep", "msaw"})
   public void theServerShouldKeepDataWhenClientDisconnect() throws IOException {
@@ -140,28 +132,18 @@ public class RouletteV1WasadigiTest {
     client1.loadStudent("Toto Tata");
     client1.disconnect();
     
-    assertNotNull(client.pickRandomStudent());
-    
-    client1.close();
-    client2.close();
-  }
+    assertTrue(client2.pickRandomStudent().equals(Student("Toto Tata")));
+  }*/
   
   
   @Test
   @TestAuthor(githubId = {"xajkep", "msaw"})
-  public void theServerShouldSaveGivenData() throws IOException {
+  public void theServerShouldSaveGivenData() throws IOException, EmptyStoreException {
     IRouletteV1Client client = roulettePair.getClient();
     client.loadStudent("Foo Bar");
     
-    assert("Foo Bar", client.pickRandomStudent());
+    assertEquals("Foo Bar", client.pickRandomStudent());
   }
-  
-  
-  @Test
-  @TestAuthor(githubId = {"xajkep", "msaw"})
-  public void theServerShouldReturnErrorIfRandomCmdIsUseWithoutData() throws IOException {
-    IRouletteV1Client client = roulettePair.getClient();
-    assertNull(client.pickRandomStudent());
-  }
+
   
 }
