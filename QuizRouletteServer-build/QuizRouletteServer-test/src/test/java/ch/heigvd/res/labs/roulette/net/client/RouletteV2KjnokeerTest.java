@@ -14,7 +14,7 @@ import org.junit.rules.ExpectedException;
 
 /**
  * This class contains automated tests to validate the client and the server
- * implementation of the Roulette Protocol (version 1)
+ * implementation of the Roulette Protocol (version 2)
  *
  * @author Dolt Mathias
  */
@@ -51,7 +51,7 @@ public class RouletteV2KjnokeerTest {
     students.add(new Student());
     assertEquals(0, roulettePair.getClient().getNumberOfStudents());
     roulettePair.getClient().loadStudents(students);
-    assertEquals(0, roulettePair.getClient().getNumberOfStudents());
+    assertEquals(2, roulettePair.getClient().getNumberOfStudents());
     RouletteV2ClientImpl client = new RouletteV2ClientImpl();
     client.connect("localhost", roulettePair.getServer().getPort());
     client.clearDataStore();
@@ -60,8 +60,12 @@ public class RouletteV2KjnokeerTest {
   
   @Test
   @TestAuthor(githubId = "Kjnokeer")
-  public void theServerShouldBeListenedOnDefaultPort2613() throws IOException {
-    assertEquals(2613, roulettePair.getServer().getPort());
+  public void theServerShouldThrowAnExceptionWhenEmptyDatastore() throws IOException, EmptyStoreException {
+    RouletteV2ClientImpl client = new RouletteV2ClientImpl();
+    client.connect("localhost", roulettePair.getServer().getPort());
+    client.clearDataStore();
+    exception.equals(EmptyStoreException.class);
+    client.pickRandomStudent();
   }
   
   @Test
