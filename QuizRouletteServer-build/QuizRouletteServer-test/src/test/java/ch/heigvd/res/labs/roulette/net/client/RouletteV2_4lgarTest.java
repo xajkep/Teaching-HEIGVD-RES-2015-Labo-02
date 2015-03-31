@@ -36,7 +36,9 @@ public class RouletteV2_4lgarTest {
     @TestAuthor(githubId = "4lgar")
     public void theServerShouldBeAbleToWorkWithTwoClient() throws IOException, EmptyStoreException{
         IRouletteV2Client client1 = new RouletteV2ClientImpl();
+        client1.connect("localhost", roulettePair.getServer().getPort());
         IRouletteV2Client client2 = new RouletteV2ClientImpl();
+        client2.connect("localhost", roulettePair.getServer().getPort());
         
         client1.loadStudent("Jean");
         client2.loadStudent("Christianne");
@@ -49,14 +51,16 @@ public class RouletteV2_4lgarTest {
     @TestAuthor(githubId = "4lgar")
     public void theClientShouldBeDisconnectedWhenWeUseDisconectMethod() throws IOException {
         IRouletteV2Client client = new RouletteV2ClientImpl();
+        client.connect("localhost", roulettePair.getServer().getPort());
         client.disconnect();
-        assertFalse(roulettePair.getServer().isRunning());
+        assertFalse(client.isConnected());
     }
     
     @Test
     @TestAuthor(githubId = "4lgar")
     public void theClientShouldBeAbleToLoadAStudent() throws IOException {
         IRouletteV2Client client = new RouletteV2ClientImpl();
+        client.connect("localhost", roulettePair.getServer().getPort());
         client.loadStudent("Jean");
         assertEquals("Jean", client.listStudents().get(0).getFullname());
     }
@@ -65,6 +69,8 @@ public class RouletteV2_4lgarTest {
     @TestAuthor(githubId = "4lgar")
     public void theServerShouldSendACorrectFormattedList() throws IOException {
         IRouletteV2Client client = new RouletteV2ClientImpl();
+        client.connect("localhost", roulettePair.getServer().getPort());
+        
         List<Student> stu = new ArrayList<Student>();
         
         stu.add(new Student("Jean"));
@@ -80,6 +86,8 @@ public class RouletteV2_4lgarTest {
     @TestAuthor(githubId = "4lgar")
     public void theServerShouldCountTheNumberOfCommandCorrectly() throws IOException {
         IRouletteV2Client client = new RouletteV2ClientImpl();
+        client.connect("localhost", roulettePair.getServer().getPort());
+        
         client.loadStudent("Jean");
         client.loadStudent("Marie");
         client.loadStudent("Danièle");
@@ -90,6 +98,8 @@ public class RouletteV2_4lgarTest {
     @TestAuthor(githubId = "4lgar")
     public void theClientShouldBeAbleToAddAListOfStudent() throws IOException, EmptyStoreException{
         IRouletteV2Client client = new RouletteV2ClientImpl();
+        client.connect("localhost", roulettePair.getServer().getPort());
+        
         List<Student> list = new ArrayList<Student>();
         
         list.add(new Student("Jean"));
