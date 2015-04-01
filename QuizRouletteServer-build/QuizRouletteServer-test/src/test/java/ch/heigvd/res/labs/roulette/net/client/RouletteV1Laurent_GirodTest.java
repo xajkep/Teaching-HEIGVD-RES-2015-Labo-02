@@ -65,7 +65,6 @@ public class RouletteV1Laurent_GirodTest {
     	clients[i].connect("localhost", port);
     }
     for (int i = 0; i < clients.length; ++i) {
-    	clients[i] = new RouletteV1ClientImpl();
     	clients[i].disconnect();
     	assertFalse(clients[i].isConnected());
     }
