@@ -95,7 +95,7 @@ public class RouletteV2TS_MBTest  {
   
   @Test
   @TestAuthor(githubId = {"ThibaultSchowing","mberthouzoz"})
-  public void asdfasf() throws IOException{
+  public void theServerShouldAddAStudentFromAList() throws IOException{
     IRouletteV2Client client = (IRouletteV2Client)roulettePair.getClient();
       
     Student etudiant = new Student("Bob");
@@ -109,7 +109,7 @@ public class RouletteV2TS_MBTest  {
   
   @Test
   @TestAuthor(githubId = {"ThibaultSchowing","mberthouzoz"})
-  public void asdfaasdfsf() throws IOException{
+  public void theServerShouldAddAllStudentsFromAList() throws IOException{
     IRouletteV2Client client = (IRouletteV2Client)roulettePair.getClient();
       
     List<Student> liste = new ArrayList<Student>();
