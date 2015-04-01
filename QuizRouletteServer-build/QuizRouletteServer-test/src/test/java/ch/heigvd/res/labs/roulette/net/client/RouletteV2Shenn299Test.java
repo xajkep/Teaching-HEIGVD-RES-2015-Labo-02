@@ -84,6 +84,7 @@ public class RouletteV2Shenn299Test {
    public void theServerShouldBeAbleToSendHisListOfStudent() throws IOException{
       // Création du client
       IRouletteV2Client client = new RouletteV2ClientImpl();
+      client.connect("localhost", roulettePair.getServer().getPort());
       // Création d'une liste d'étudiant vide
       List<Student> liste = new ArrayList<>();
       // Ajout de deux étudiants à la liste créée
