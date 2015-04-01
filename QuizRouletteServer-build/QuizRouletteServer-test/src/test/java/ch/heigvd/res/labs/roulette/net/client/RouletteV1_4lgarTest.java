@@ -56,7 +56,31 @@ public class RouletteV1_4lgarTest {
         list.add(new Student("Christian"));
         list.add(new Student("Micheline"));
         
-        assertEquals(3, client.getNumberOfStudents());
+        boolean[] studentCheck = {false, false, false};
+        int cpt = 0;
+        
+        //LAZY MODE to check if we have all student on the srv. Get the list
+        //of student is only available in V2.
+        //I put a limit (cpt) to avoid infinity loop.
+        while(cpt++ <= 100){
+            switch(client.pickRandomStudent().getFullname()){
+                case"Jean":
+                    studentCheck[0] = true;
+                    break;
+                case"Christian":
+                    studentCheck[1] = true;
+                    break;
+                case"Micheline":
+                    studentCheck[2] = true;
+                    break;
+            }
+            //If we found all students, quit the loop
+            if(studentCheck[0] == true && studentCheck[1] == true && studentCheck[2] == true){
+                break;
+            }
+        }
+        
+        assertTrue(studentCheck[0] == true && studentCheck[1] == true && studentCheck[2] == true);
     }
 
     @Test
@@ -115,7 +139,7 @@ public class RouletteV1_4lgarTest {
         score[0] -= 300;
         score[1] -= 300;
         score[2] -= 300;
-        double delta = (score[1] + score[2] + score[3])/3.0;
+        double delta = (score[0] + score[1] + score[2])/3.0;
         //Delta should be between in a confidance interval
         //(here, between 1 and 3)
         assertTrue(delta >= 0 && delta <= 3);
