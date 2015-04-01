@@ -105,6 +105,9 @@ public class RouletteV2_4lgarTest {
         list.add(new Student("Jean"));
         list.add(new Student("Christian"));
         list.add(new Student("Micheline"));
+        
+        //AND don't forget to send it to the server...
+        client.loadStudents(list);
                 
         assertTrue(client.listStudents().containsAll(list));
     }
