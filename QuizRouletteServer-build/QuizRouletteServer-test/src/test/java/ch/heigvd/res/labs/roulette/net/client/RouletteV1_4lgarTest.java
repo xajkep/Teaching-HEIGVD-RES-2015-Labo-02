@@ -56,6 +56,9 @@ public class RouletteV1_4lgarTest {
         list.add(new Student("Christian"));
         list.add(new Student("Micheline"));
         
+        //AND don't forget to send it to the server...
+        client.loadStudents(list);
+        
         boolean[] studentCheck = {false, false, false};
         int cpt = 0;
         
