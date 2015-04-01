@@ -89,6 +89,7 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
         
         writer.println("CLEAR");
         writer.flush();
+        inviteMSG = reader.readLine();
 
         writer.println("RANDOM");
         writer.flush();
@@ -115,7 +116,8 @@ public class RouletteV2ond9IIIIIIIIIIIIITest {
         
         writer.println("CLEAR");
         writer.flush();
-
+        inviteMSG = reader.readLine(); // not used
+        
         writer.println("INFO");
         writer.flush();
 
