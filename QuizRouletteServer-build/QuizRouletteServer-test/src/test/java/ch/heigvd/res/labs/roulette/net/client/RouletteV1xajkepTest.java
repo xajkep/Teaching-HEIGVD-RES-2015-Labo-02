@@ -144,6 +144,4 @@ public class RouletteV1xajkepTest {
     
     assertEquals("Foo Bar", client.pickRandomStudent());
   }
-
-  
 }
